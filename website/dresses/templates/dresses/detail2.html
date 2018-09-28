@@ -1,0 +1,139 @@
+
+<div class="container-fluid">
+    <div class="row">
+    {% extends 'dresses/base.html' %}
+        <div class="col-sm-8">
+
+        {% block title %}Lehenga Details{% endblock %}
+
+        {% block body %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <pre>         <img src="{{ object.lehenga_pic}}" height=500 width=500 align="center" ></pre>
+                    <br>
+                    <form action="{% url "cart:cart_add" object.id %}" method="post">
+                        {% csrf_token %}
+                        {{ cart_product_form }}
+                        <button type="submit" class="col-md-12" style="background-color: black ; height: 50px" ><font color="white">BUY NOW</font></button>
+
+                    </form>
+                     <!--<button href="#" class="btn btn-secondary btn-lg btn-block" type="button">BUY NOW</button>
+-->
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="blockquote">
+                        <p class="mb-0">
+                            <h1>{{ object.lehenga_desc }}</h1>
+                            <h2>{{ object.lehenga_price }}</h2>
+                            <!--<h3> Stock available : {{ object.stock }}</h3>-->
+                            <h3>Size : {{ object.lehenga_size }}</h3>
+
+                            <br>
+                            <h4>Colours available : </h4>
+                            <ul>
+                                {% for lehenga in object.weddinglehenga_set.all %}
+                                    <li>{{ lehenga.wedL_colour }}</li>
+                                {% endfor %}
+                            </ul>
+                        </p>
+
+                    </blockquote>
+                    <div class="col-md-6">
+			<dl>
+				<dt>
+					Description lists
+				</dt>
+				<dd>
+					Embroidery Work On Red Velvet Designer Wedding Lehenga With Choli
+				</dd>
+				<dd>
+					Fabric : Velvet
+				</dd>
+				<dd>
+				    Work : Embroidery
+                </dd>
+				<dd>
+					Occasion : Mehendi, Reception, Wedding
+				</dd>
+				<dd>
+					Sleeves Customization :	Available with stitching option only
+				</dd>
+				<dd>
+					Neck Customization	Available with stitching option only
+				</dd>
+				<dd>
+					Wash Care :	First wash dry clean only
+				</dd>
+				<dt>
+					Offers
+15% Off + Free Shipping
+Use Code : MFSFS
+15% Off + Extra 25% Off
+Use Code : MFS25OFF
+				</dt>
+			</dl>
+		</div>
+	                </div>
+                </div>
+            </div>
+
+            <br><br>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                 <div class="thumbnail">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img alt="Bootstrap Image Preview" src="https://images.kalaniketan.com/catalog/product/cache/1/small_image/224x324/17f82f742ffe127f42dca9de82fb58b1/T/8/T801_815.jpg" width="200" height="200">
+                            <address>
+                                Cyan and peach coloured net lehenga
+                            </address>
+                        </div>
+                        <div class="col-md-3">
+                            <img alt="Bootstrap Image Preview" src="https://images.kalaniketan.com/catalog/product/cache/1/small_image/224x324/17f82f742ffe127f42dca9de82fb58b1/M/C/MC_1004.jpg" height="200" width="200">
+                            <address>
+                                Blood red coloured embroidered lehenga
+                            </address>
+                        </div>
+                        <div class="col-md-3">
+                            <img alt="Bootstrap Image Preview" src="https://images.kalaniketan.com/catalog/product/cache/1/small_image/224x324/17f82f742ffe127f42dca9de82fb58b1/K/N/KN-BF-152.jpg" height="200" width="200">
+                            <address>
+                                Ethinic red coloured lehenga
+                            </address>
+                        </div>
+
+
+
+                        <div class="col-md-3">
+                            <img alt="Bootstrap Image Preview" src="https://images.kalaniketan.com/catalog/product/cache/1/small_image/224x324/17f82f742ffe127f42dca9de82fb58b1/8/4/846_1003.jpg" width="200" height="200">
+                            <address>
+                                     Reception wear 3-piece embroidered lehenga
+                            </address>
+                        </div>
+                         </div>
+
+
+                </div>
+                </div>
+            </div>
+        </div>
+         </div>
+
+
+
+
+
+        </div>
+
+</div>
+</div>
+
+
+
+
+
+{% include 'dresses/customer_review.html' %}
+            {% include 'dresses/footer.html' %}
+{% endblock %}

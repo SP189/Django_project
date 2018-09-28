@@ -1,0 +1,8 @@
+{% if object_list %}
+{% for lehenga in object_list %}
+<li><a href="{% url 'dresses:detail2' lehenga.id %}">{{ lehenga.lehenga_desc}}</a> </li>
+{% endfor %}
+
+{% else %}
+<h3>You dont have any lehenga</h3>
+{% endif %}

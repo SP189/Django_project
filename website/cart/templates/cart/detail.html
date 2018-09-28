@@ -1,0 +1,74 @@
+{% extends 'dresses/base.html' %}
+{% load staticfiles %}
+
+{% block body %}
+    <div class="container">
+        <div class="row" style="margin-top: 6%">
+        <h2>Your Shopping Cart
+            <span class="badge pull-right">
+                {% with total_items=cart|length %}
+                    {% if cart|length >= 0 %}
+                        My Shopping Order:
+                        <a href="{% url "cart:cart_detail" %}" style="color: #ffffff">
+                            {{ totail_items }} item {{ totail_items|pluralize }},Rs. {{ cart.get_total_price }}
+                        </a>
+                    {% else %}
+                        Your cart is empty.
+                    {% endif %}
+                {% endwith %}
+            </span>
+        </h2>
+
+            <table class="table table-striped table-hover">
+                <thead style="background-color: black">
+
+                    <tr>
+                        <th><font color="white" >Image</font></th>
+                        <th><font color="white" >Product</font></th>
+                        <th><font color="white" >Quantity</font></th>
+                        <th><font color="white" >Remove</font></th>
+                        <th><font color="white" >Unit Price</font></th>
+                        <th><font color="white" >Price</font></th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                {% for item in cart %}
+                    {% with product=item.product  %}
+                        <tr>
+                            <td>
+                                <a href="{{ product.get__absolute_url }}">
+                                    <img src="{{ product.lehenga_pic }}" alt="..." style="height: 100px; width: 100px">
+                                </a>
+                            </td>
+                            <td>{{ product.lehenga_desc }}</td>
+                            <td>
+                                <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                    {% csrf_token %}
+                                    {{ item.update_quantity_form.quantity }}
+                                    {{ item.update_quantity_form.update }}
+                                    <input type="submit" value="Update" class="btn btn-info">
+                                </form>
+                            </td>
+                            <td>
+                                <a href="{% url "cart:cart_remove" product.id %}">Remove</a>
+                            </td>
+                            <td>Rs. {{ item.price }}</td>
+                            <td>Rs. {{ item.total_price }}</td>
+                        </tr>
+                    {% endwith %}
+                {% endfor %}
+                <tr style="background-color: black">
+                    <td><b><font color="white" >Total</font></b></td>
+                    <td colspan="4"></td>
+                    <td colspan="num"><b><font color="white" >Rs. {{ cart.get_total_price }}</font></b></td>
+                </tr>
+                </tbody>
+            </table>
+        <p class="text-right">
+            <a href="{% url "dresses:list" %}" class="btn btn-default" style="color: white; background-color: black">Continue Shopping</a>
+            <a href="{% url "orders:order_create" %}" class="btn btn-primary" style="color: white; background-color: black">Proceed to Pay</a>
+        </p>
+        </div>
+    </div>
+{% endblock %}

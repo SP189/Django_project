@@ -1,0 +1,64 @@
+
+<!-- if u want navbar include this :
+extends 'dresses/base.html' or doNotUse.html like in index.html -->
+<style>
+    div.col-md-6 {
+        border-style: solid;
+        border-width: 5px;
+        border-radius: 15px;
+    }
+    input.user,input.pass {
+        border-style: solid;
+        border-width:thin;
+        border-radius: 5px;
+    }
+</style>
+{% block body %}
+    {% include 'dresses/doNotUse.html' %}
+<br><br><br>
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-8">
+            <h4 align="center">To avail discount please login</h4>
+			<div class="row">
+
+				<div class="col-md-3">
+				</div>
+				<div class="col-md-6">
+
+                    <div class="container-fluid" align="center">
+                      <h2>Login</h2>
+                        <br><br>
+                      <form method="post" class="form-signup" action="{% url 'dresses:authentiate' %}">
+                        {% csrf_token %}
+
+                          <input type="text" name="username" value="" class="user"><br><br>
+                          <input type="password" name="password" value="" class="pass"><br><br>
+
+                          <input type="checkbox">Remember Me<br><br>
+                          <button type="submit"><b>Login</b></button><br>
+                      </form>
+                        <form action="{% url 'dresses:register' %}">
+                          <button type="submit"><b>Register</b></button>
+                    </form>
+
+
+                        </div>
+
+				</div>
+				<div class="col-md-3">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
+
+
+

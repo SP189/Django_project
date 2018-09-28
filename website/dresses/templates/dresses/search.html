@@ -1,0 +1,23 @@
+
+
+{% extends 'dresses/base.html' %}
+{% block body %}
+
+{% for lehengas in lehengas %}
+        <img src="{{ lehengas.lehenga_pic}}" height=200 width=200 align="center" >
+        <div class="col-md-4">
+            <blockquote class="blockquote">
+                    <p class="mb-0">
+                    <a href="{% url 'dresses:detail2' lehengas.id %}">{{ lehengas.lehenga_desc }}</a><br>
+                    <p>{{ lehengas.lehenga_size }}</p>
+
+                </p>
+            </blockquote>
+        </div>
+
+        <br>
+
+    {% endfor %}
+<br><br><br>
+    {% include 'dresses/footer.html' %}
+{% endblock %}

@@ -1,0 +1,67 @@
+<!-- if u want navbar include this :
+extends 'dresses/base.html' or doNotUse.html like in index.html
+
+write block title : Add New Lehenga
+block lehengas_active : active
+-->
+
+
+<style>
+    div.col-md-6 {
+        border-style: solid;
+        border-width: 5px;
+        border-radius: 15px;
+    }
+    input.user,input.pass {
+        border-style: solid;
+        border-width:thin;
+        border-radius: 5px;
+    }
+</style>
+{% block body %}
+{% include 'dresses/doNotUse.html' %}
+<br><br><br><br>
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-8">
+			<div class="row">
+				<div class="col-md-3">
+				</div>
+				<div class="col-md-6" align="center" >
+
+                    <h3>Create New Account</h3>
+                <br>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" action="#" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'dresses/form-template.html' %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success" onclick="myFunction()">SUBMIT</button>
+                                 <script>
+                                function myFunction() {
+                                    alert("Registered Successfully");
+                                }
+                                </script>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+				</div>
+				<div class="col-md-3">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+

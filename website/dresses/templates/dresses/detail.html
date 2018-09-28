@@ -1,0 +1,29 @@
+
+<div class="container-fluid">
+    <div class="row">
+    {% extends 'dresses/base.html' %}
+        <div class="col-sm-8">
+
+        {% block title %}Lehenga Details{% endblock %}
+
+        {% block body %}
+
+        <img src="{{ object.lehenga_pic}}" height=300 width=300>
+
+        <h1>{{ object.lehenga_desc }}</h1>
+        <h3>{{ object.lehenga_size }}</h3>
+
+        <br>
+        <h4>Colours available : </h4>
+        <ul>
+            {% for lehenga in object.weddinglehenga_set.all %}
+                <li>{{ lehenga.wedL_colour }}</li>
+            {% endfor %}
+        </ul>
+        {% endblock %}
+        </div>
+        <div class="col-sm-4">
+            <h1>HELLO PEOPLE ARE U ENJOYING </h1>
+        </div>
+</div>
+</div>
